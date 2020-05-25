@@ -4,9 +4,17 @@
  git --version  可以查看当前使用的版本
  
  使用：
-      将某一文件夹初始化为仓库repository：  切换到该文件的目录下，  执行  git init
+    建立仓库：
+      将某一文件夹初始化为仓库repository：  切换到该文件的目录下，  执行  git init  ，使用ls - la可以看到有一个.git的隐藏文件
       将文件夹的某一文件加入仓库：  git add 文件名
       将当前文件夹所有文件加入仓库： git add .
       查看仓库的状态：git status
-      提交commit： 将文件加入仓库之后只是缓存，要进行commit：   git commit -m '填写提交的原因'，初次提交会提示需要注册邮箱和用户名，复制代码执行就可以
+      提交commit： 将文件加入仓库之后只是缓存，要进行commit：   git commit -m '填写提交的原因'，初次提交会提示需要注册邮箱和用户名，
+                   复制代码执行就可以
       查看日志：git log
+    
+    删除与恢复：
+      在工作区（当前文件夹）工作时，删除了某一文件，可以使用 git checkout <文件名> 进行回复，如果把已将把删除动作commit了，那就要进行版本恢复
+      查看日志，每一次提交都会生成一个commit号，使用命令 git reset --hard <commit号前几位> 或者使用 git reset --hard HEAD^ 回到上一版本，
+      一个^ 代表往后恢复一个版本
+      
