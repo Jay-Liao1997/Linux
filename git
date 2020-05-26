@@ -26,7 +26,9 @@
         
         
         
-     查看当前使用账户： git config user.name
+     查看当前使用账户： git config user.name                   我在阿里云服务器上的git：user.email=1046250579@qq.com
+                                                                                     user.name=Jay1997
+
      查看当前账户邮箱： git config user.email
      修改用户名和邮箱：git config global --user.name 'your name'
                       git config global --user.email 'your email'
