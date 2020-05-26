@@ -23,5 +23,14 @@
         首先要在码云创建好仓库，然后点击克隆/下载按钮，复制HTTP网址；然后回到服务器，切换到合适的路径，进行 git clong 网址   ，此时就在服务器
         拿到了码云上的仓库，把服务器的代码放到这个仓库，然后进行commit，最后还要  git push。
         在码云上可以在线编辑代码，编辑完成后，到服务器 git pull 就能把对应文件的修改过的内容同步。
+        
+        
+        
+     查看当前使用账户： git config user.name
+     查看当前账户邮箱： git config user.email
+     修改用户名和邮箱：git config global --user.name 'your name'
+                      git config global --user.email 'your email'
+                      
+      查看用户信息： git config --list
 
 
