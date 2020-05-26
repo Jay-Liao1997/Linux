@@ -1,0 +1,17 @@
+在pycharm完成代码后，点击上面工具栏，VCS--get from version control...,在URL输入在码云的仓库连接，就在当前文件建立起了git仓库；
+然后在VCS进行添加文件和提交操作，有时需要在VCS的remote选项下添加码仓库的路径。
+最后在VCS进行push操作
+
+
+可能会报 Push to origin/master was rejected
+
+这时切出来windows，看看你的项目在那个盘，找到那个文件夹，右键 打开Git Bash Here（注意项目目录的位置），
+然后在命令窗输入下面命令：
+
+git pull origin master --allow-unrelated-histories
+
+最后出现完成信息，则操作成功！
+
+再次Push代码，可以成功进行提交！！！
+
+20200526
