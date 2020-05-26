@@ -31,6 +31,6 @@
      修改用户名和邮箱：git config global --user.name 'your name'
                       git config global --user.email 'your email'
                       
-      查看用户信息： git config --list
+      查看用户信息： git config --list     cat .gitconfig
 
 
