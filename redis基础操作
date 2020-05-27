@@ -11,3 +11,10 @@ Linux系统下
 
 # redis-cli  连接自己的redis
 # redis-cli -h ip地址 -p 端口号       连接对方的redis
+
+进入redis之后
+
+# set 键 值      存入数据
+# set 键 值 ex n秒     存入数据，这对数据n秒后消失
+# ttl 键     查看这个键值对还有多少存活时间
+# get 键     通过键获取值
