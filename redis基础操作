@@ -1,4 +1,4 @@
-Linux系统下
+（Linux系统）
 
 # redis-server --version   查看是否安装redis
 # redis-cli --version      查看是否安装redisclient
@@ -11,9 +11,10 @@ Linux系统下
 # netstat -nap | grep redis 查看redis是否开启
 
 # redis-cli  连接自己的redis
-# redis-cli -h ip地址 -p 端口号       连接对方的redis
+# redis-cli -h ip地址 -p 端口号      连接对方的redis
+# ## 如果有密码：  auth 密码         登录成功之后，执行ping，如果返回pong，则说明连接成功
 
-进入redis之后
+（进入redis之后）
 
 # set 键 值      存入数据
 # set 键 值 ex n秒     存入数据，这对数据n秒后消失
