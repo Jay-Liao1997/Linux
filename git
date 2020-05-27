@@ -23,9 +23,9 @@
         首先要在码云创建好仓库，然后点击克隆/下载按钮，复制HTTP网址；然后回到服务器，切换到合适的路径，进行 git clong 网址   ，此时就在服务器
         拿到了码云上的仓库，把服务器的代码放到这个仓库，然后进行commit，最后还要  git push。
         在码云上可以在线编辑代码，编辑完成后，到服务器 git pull 就能把对应文件的修改过的内容同步。
+#########################################################################################################################################        
         
-        
-        
+  ##20200526      
      查看当前使用账户： git config user.name                   我在阿里云服务器上的git：user.email=1046250579@qq.com
                                                                                      user.name=Jay1997
 
@@ -34,5 +34,24 @@
                       git config global --user.email 'your email'
                       
       查看用户信息： git config --list     cat .gitconfig
-
+ ################################################################################################################################################    
+  
+##20200527
+   在码云建立仓库时没有选择自动初始化之后该怎么办？
+   1、复制建立好的仓库的HTTP
+   2、回到你要上传文件的文件夹，右键打开 git bash here
+   3、键入以下代码
+       git config --global user.name "用户名"
+       git config --global user.email "邮箱"
+       
+       touch README.md
+       git add README.md
+       git commit -m 'first commit'
+       git remote add origin 第一步复制的HTTP
+       git push -u origin master
+       (有可能会报用户名或密码错误，如果报，则执行以下代码）
+       git config --system --unset credential.helper
+       再次执行 git push -u origin master 即可
+   
+   
 
