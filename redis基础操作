@@ -1,0 +1,9 @@
+Linux系统下
+
+# redis-server --version   查看是否安装redis
+# redis-cli --version      查看是否安装redisclient
+
+# redis-server > redis.log &   在后台运行redis，并把运行结果重定向到redis.log
+# redis-server --port 端口号 > redis.log &  修改端口号，然后后台运行redis，并把运行结果重定向到redis.log
+# redis-server --requirepass 密码 > rdis.log & 设密码，然后后台运行redis，并把运行结果重定向到redis.log
+# jods 查看进程
