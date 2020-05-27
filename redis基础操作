@@ -5,9 +5,12 @@
 
 # redis-server > redis.log &   在后台运行redis，并把运行结果重定向到redis.log
 # redis-server --port 端口号 > redis.log &  修改端口号，然后后台运行redis，并把运行结果重定向到redis.log
-# redis-server --requirepass 密码 > rdis.log & 设密码，然后后台运行redis，并把运行结果重定向到redis.log
+# redis-server --requirepass 密码 > rdis.log & 设密码，然后后台运行redis，并把运行结果重定向到redis.log（设密码后登录redis-cli要输入密码，
+                                                                                                     输入密码的语句为  auth 密码。）
+
 ###  使用配置文件启动redis-server  redis-server redis-5.0.4/redis.conf
       如果要进行配置文件的修改，不要在原redis.conf上面修改，应该要把他复制一份到其他文件夹，进行修改，然后启动时用改好的conf文件那个路径来启动
+      
 # jods 查看进程
 # netstat -nap | grep redis 查看redis是否开启
 
