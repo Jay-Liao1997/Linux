@@ -6,6 +6,7 @@ Linux系统下
 # redis-server > redis.log &   在后台运行redis，并把运行结果重定向到redis.log
 # redis-server --port 端口号 > redis.log &  修改端口号，然后后台运行redis，并把运行结果重定向到redis.log
 # redis-server --requirepass 密码 > rdis.log & 设密码，然后后台运行redis，并把运行结果重定向到redis.log
+###  使用配置文件启动redis-server  redis-server redis-5.0.4/redis.conf
 # jods 查看进程
 # netstat -nap | grep redis 查看redis是否开启
 
@@ -18,3 +19,9 @@ Linux系统下
 # set 键 值 ex n秒     存入数据，这对数据n秒后消失
 # ttl 键     查看这个键值对还有多少存活时间
 # get 键     通过键获取值
+
+
+
+
+# quit 退出redis
+# redis-benchmark 测试redis的性能
