@@ -7,7 +7,6 @@
 # redis-server --port 端口号 > redis.log &  修改端口号，然后后台运行redis，并把运行结果重定向到redis.log
 # redis-server --requirepass 密码 > rdis.log & 设密码，然后后台运行redis，并把运行结果重定向到redis.log（设密码后登录redis-cli要输入密码，
                                                                                                      输入密码的语句为  auth 密码。）
-
 ###  使用配置文件启动redis-server  redis-server redis-5.0.4/redis.conf
       如果要进行配置文件的修改，不要在原redis.conf上面修改，应该要把他复制一份到其他文件夹，进行修改，然后启动时用改好的conf文件那个路径来启动
       
@@ -25,11 +24,19 @@
 # ttl 键     查看这个键值对还有多少存活时间
 # get 键     通过键获取值
 
-
-
-
 # quit 退出redis
 # redis-benchmark 测试redis的性能
+
+（redis修复持久化文件的工具）
+
+在redis的文件下有一个dump.rdb 的文件是用来存储数据的。如果被损坏了，可以进行修复
+#检查： redis-check-rdb dump.rdb
+#修复： redis-check-rdb --fix dump.rdb
+
+
+#开启aof的保存方式：  redis-server --requirepass 密码 --appendonly yes > redis.log & （保存敲过的命令，下次登录时执行一遍，达到储存的目的）
+#检查： redis-check-aof appendonly.aof
+#修复： redis-check-aof --fix appendonly.aof
 
 
 [详细操作登录 redisdoc.com 可以查看]
