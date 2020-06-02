@@ -1,0 +1,16 @@
+问题：使用Xhell无法远程连接Ubuntu
+原因：Ubuntu没有安装ssh远程服务.
+解决：进行安装：apt install openssh-server  安装之后重启服务：service ssh restart
+    
+          问题：再次用Xshell进行连接，发现已经可以开始连接，输入root和密码，发现拒绝登录；使用普通用户登录可以成功
+          原因：ssh文件配置中不允许远程连接root
+          解决：配置文件 vim /etc/ssh/sshd_config
+                找到 PermitRootLogin prohibit-password 注释掉（默认应该就是注释的）
+                在这句下面添加 PermitRootLogin yes
+                重启服务，再次连接就能成功。
+                
+                
+                                                                                                --20200602 16:37
+    
+    
+    
