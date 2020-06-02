@@ -15,7 +15,5 @@
   
 # Ubuntu在登录时默认不能直接登录root
 
-首先修改/etc/lightdm/lightdm.conf，设置autologin-user=root
-然后修改/root/.profile，注释掉mesg n || true，并且新添加一行：tty -s && mesg n
-重启即可看到效果
+
     
