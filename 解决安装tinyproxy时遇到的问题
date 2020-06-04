@@ -1,0 +1,54 @@
+#在Aliyun服务器上安装tinyproxy：  yum install tinyproxy
+        怎么改都说找不到和tinyproxy匹配的包
+        
+     #只好使用rpm来装了
+     
+     # wget  http://rpmfind.net/linux/fedora/linux/releases/30/Everything/x86_64/os/Packages/t/tinyproxy-1.10.0-3.fc30.x86_64.rpm
+       (装太高版本会有其他依赖，麻烦，装这个版本不用安装其他依赖）
+       rpm -ivh tinyproxy-1.10.0-3.fc30.x86_64.rpm
+       
+       
+       
+       
+                                                                         2020-06-04 17:42
+       
+##########################如何更改yum源##########################
+   在 CentOS 7 中安装 EPEL 源的命令如下:
+
+yum install -y epel-release
+
+安装完成后, 在 /etc/yum.repos.d 目录下会多出来下面两个文件, 这两个文件就是 EPEL 源的配置文件:
+
+epel.repo
+epel-testing.repo
+查看 epel.repo 文件中的内容可以发现其中软件源的地址指向的是 https://mirrors.fedoraproject.org/, epel-testing.repo 这个文件中的软件源的地址也是指向的是 https://mirrors.fedoraproject.org/. 为了加快软件安装速度, 我们可以将其更改为国内的 EPEL 源, 操作步骤如下:
+
+进入 /etc/yum.repos.d 目录, 下载阿里云 EPEL 源:
+
+wget http://mirrors.aliyun.com/repo/epel-7.repo
+
+备份 Fedora 官方提供的 EPEL 源配置文件:
+
+cp -p epel.repo epel.repo.bak
+cp -p epel-testing.repo epel-testing.repo.bak
+
+
+删除 epel-testing.repo:
+
+rm -rf epel-testing.repo
+
+将 epel-7.repo 中的内容覆盖写入到原来的 epel.repo 文件中:
+
+cp -p epel-7.repo epel.repo
+
+删除 epel-7.repo 文件:
+
+rm -rf epel-7.repo
+
+重新生成缓存:
+
+yum clean all
+yum makecache
+————————————————
+版权声明：本文为CSDN博主「zhaokaifeng.com」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/wy_bk/article/details/89648052
