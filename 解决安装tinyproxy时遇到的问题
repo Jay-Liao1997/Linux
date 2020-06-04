@@ -6,6 +6,23 @@
      # wget  http://rpmfind.net/linux/fedora/linux/releases/30/Everything/x86_64/os/Packages/t/tinyproxy-1.10.0-3.fc30.x86_64.rpm
        (装太高版本会有其他依赖，麻烦，装这个版本不用安装其他依赖）
        rpm -ivh tinyproxy-1.10.0-3.fc30.x86_64.rpm
+       解压好之后就可以了。下面开始修改配置文件：
+       vim /etc/tinyproxy/tinyproxy.conf  #在200多行左右，把 allow 127.0.0.1 那一行注释掉
+                                          #在23行左右，把端口号改大一点，不要使用8000或者8888，可以使用41801
+                                          #保存退出
+        查看一下日志文件：
+        tail -f /var/log/tinyproxy/tinyproxy.log
+        (此时已经把阿里云服务器设置成了自己的代理服务器）
+        
+        #使用代理服务器
+        在虚拟机上打开Ubuntu：  export HTTP_PROXY=http://阿里云公网ip：端口号（如果接下来的实验没有成功，可能是阿里云上没有开放对应的端口号，去安全组设置开放就行）
+        ~#  python3
+        >>>import requests
+        >>> requests.get('http://httpbin.org/ip').json()
+        此时返回的ip就是代理服务器的ip（也就是阿里云的公网ip）
+        
+        
+       
        
        
        
@@ -21,7 +38,9 @@ yum install -y epel-release
 
 epel.repo
 epel-testing.repo
-查看 epel.repo 文件中的内容可以发现其中软件源的地址指向的是 https://mirrors.fedoraproject.org/, epel-testing.repo 这个文件中的软件源的地址也是指向的是 https://mirrors.fedoraproject.org/. 为了加快软件安装速度, 我们可以将其更改为国内的 EPEL 源, 操作步骤如下:
+查看 epel.repo 文件中的内容可以发现其中软件源的地址指向的是 https://mirrors.fedoraproject.org/,
+epel-testing.repo 这个文件中的软件源的地址也是指向的是 https://mirrors.fedoraproject.org/.
+为了加快软件安装速度, 我们可以将其更改为国内的 EPEL 源, 操作步骤如下:
 
 进入 /etc/yum.repos.d 目录, 下载阿里云 EPEL 源:
 
