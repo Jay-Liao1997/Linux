@@ -61,3 +61,12 @@
          ./configure --prefix=/usr/local/pcre
          #安装
          make && make install
+         
+========================================================================================================================================
+./configure --prefix=/的作用是：编译的时候用来指定程序存放路径 。
+
+不指定prefix，可执行文件默认dao放在/usr /local/bin，库文件默认放在/usr/local/lib，
+配置文件默认放在/usr/local/etc。其它的资源文件放在/usr /local/share。
+
+with：指定依赖
+--with-依赖包名称=依赖包目录
