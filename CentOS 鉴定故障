@@ -1,0 +1,24 @@
+#在root下切换任何到任何用户都是不用密码的
+
+问题描述：创建了一个普通用户jfedu，没有密码；创建另一个普通用户 设密码 useradd -p 123 jf123
+          root下切换到jfedu，再从jfedu 切换至 jf123（su jf123）时显示  su：鉴定故障
+          换命令sudo du jf123 需要输入jfedu的密码，输入密码后，提示jfedu不再sudoer中
+          
+问题解决：将jfedu加到sudoer中
+         步骤：
+         1、进入 vim /etc/sudoers
+         2、找到 root    ALL=(ALL)       ALL
+         3、按yyp键复制并在粘贴在下一行，在这一行的 root处输入cw将root替换为所需要添加用户的账户名，比如Blinux，结果就是
+              root    ALL=(ALL)       ALL 
+              blinux  ALL=(ALL)       ALL
+
+            如果希望之后执行sudo命令时不需要输入密码，那么可以形如
+
+              root    ALL=(ALL)       ALL 
+              blinux  ALL=(ALL)       NOPASSWD:ALL
+
+            输入:wq保存即可。（readonly的话，加个！强制执行。）
+            
+            再次使用sudo su jf123即可登录
+                                                                                                        -------20200611 10:40
+
