@@ -1,0 +1,40 @@
+#使用源码包的方式安装httpd
+
+    #获取httpd
+    wget https://mirror.bit.edu.cn/apache//httpd/httpd-2.4.43.tar.bz2
+
+    #解压 
+    tar -xvf httpd-2.4.43.tar.bz2
+
+    #预编译
+    cd httpd-2.4.43
+    ./configure
+    !!报错：找不到APR     也就是依赖，要先安装apr
+
+
+#安装apr
+注意：安装apr 需要安装两个包 一个是apr包，另一个是apr-util，而且要先安装apr再到apr-uitl
+#获取apr
+wget https://mirror.bit.edu.cn/apache//apr/apr-1.7.0.tar.gz
+#解压 
+tar -xvf apr-1.7.0.tar.gz
+#创建安装目录
+mkdir /usr/local/apr
+#预编译
+./configure --prefix=/usr/local/apr/apr-1.7.0
+#安装
+make && make install
+安装成功！
+
+#安装apr-util
+#获取apr-util
+wget https://mirror.bit.edu.cn/apache//apr/apr-util-1.6.1.tar.gz
+#解压
+tar -xvf apr-util-1.6.1.tar.gz
+#创建安装路径
+mkdir /usr/local/apr/util
+#预编译
+cd apr-util-1.6.1
+./configure --prefix=/usr/local/apr/util/apr-util-1.6.1 --with-apr=/usr/local/apr/apr-1.7.0
+#安装
+make && make install
