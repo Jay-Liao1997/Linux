@@ -1,0 +1,27 @@
+#脚本内容如下
+
+####################################################################################################
+yum -y install wget gcc pcre-devel zlib-devel
+wget http://nginx.org/download/nginx-1.16.1.tar.gz
+tar -xf nginx-1.16.1.tar.gz
+cd nginx-1.16.1
+./configure --prefix=/usr/local/nginx
+make
+make install
+#####################################################################################################
+
+#查看是否安装成功
+ls /usr/local
+若存在nginx，则说明安装成功
+
+#启动nginx服务
+cd /usr/local
+./nginx/sbin/nginx
+
+#访问nginx
+在浏览器输入主机地址，若显示nginx页面则说明成功
+显示无法访问则是开启的防火墙和selinux，关闭即可
+getenforce
+setenforce 0
+systemctl stop firewalld
+systemcel disable firewalld
