@@ -1,0 +1,8 @@
+在centos8 重启网络服务输入： systemctl restart network
+
+报错：Failed to restart network.service: Unit network.service not found.
+
+原因很简单，命令用错了，造成了找不到相应的网卡服务
+
+原来centos 8 重启网络服务的命令不是那个，而是: nmcli c reload
+                                                                                                2020-07-04
