@@ -1,0 +1,14 @@
+2020-07-10
+
+使用wget下载包显示无法连接
+
+wget https://ftp.pcre.org/pub/pcre/pcre-8.10.tar.gz
+
+--2020-07-10 16:23:55--  https://ftp.pcre.org/pub/pcre/pcre-8.10.tar.gz
+正在解析主机 ftp.pcre.org (ftp.pcre.org)... 131.111.8.88
+正在连接 ftp.pcre.org (ftp.pcre.org)|131.111.8.88|:443... 失败：拒绝连接。
+
+
+
+解决方法：
+  wget –no-check-certificate  https://ftp.pcre.org/pub/pcre/pcre-8.10.tar.gz –no-check-certificate
