@@ -1,0 +1,38 @@
+2020-07-10
+
+源码编译安装过程：
+1 找包（一般下载tar.gz的）
+2 安装编译环境（必须配环境）   yum -y install gcc make zlib-devel pcre pcre-devel openssl-devel
+3 上传包或者直接用wget下载包
+4 解压。tar xf 包名
+5 进入到解压后的包的目录下（这个非常重要！不要忘记进入到目录才进行后面的步骤！）
+6 指定安装路径   ./configure --prefix=/usr/local/nginx  （prefix指定安装路径）
+7 编译 make
+8 安装 make install
+
+
+
+安装Apache2.4过程
+
+安装apche2.4版本过程中需要安装两个依赖，apr apr-util
+过程中会出现两次比较困难的问题
+
+1 apr-util致命错误:expat.h:没有那个文件或目录
+  解决：
+      环境 ：centos7 + VMware14  
+      问题：缺少 expat库
+      解决方法 ：yum install -y  expat-devel
+      再次编译即可
+      
+2 启动apache遇到错误：httpd: Could not reliably determine the server's fully qualified domain name
+
+  1）进入apache的安装目录：(视个人安装情况而不同) [root@server ~]# cd /usr/local/apache/conf
+ 
+2）编辑httpd.conf文件，搜索"#ServerName"，添加ServerName localhost:80
+[root@server conf]# ls
+extra  httpd.conf  magic  mime.types  original
+[root@server conf]# vi httpd.conf
+#ServerName www.example.com:80
+ServerName localhost:80
+3）再重新启动apache 即可。
+[root@server ~]# /usr/local/apache/bin/apachectl restart
