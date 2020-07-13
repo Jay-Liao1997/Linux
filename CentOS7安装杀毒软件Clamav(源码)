@@ -25,7 +25,35 @@ WARNING: Can't get information about user clamav.
 ERROR: Failed to switch to clamav user.
 ERROR: Initialization error!
 又报错，但是已经不是之前的错，说明修改文件名的操作生效了！
-报错说没有user
+报错说没有user，这还不简单，我给他useradd一个，再次更新病毒库：
+/usr/local/clamav/bin/freshclam
+ERROR: Database directory does not exist: /usr/local/clamav/share/clamav/
+ERROR: initialize: libfreshclam init failed.
+ERROR: Initialization error!
+还是报错！但是错误发生改变，说明刚刚的错误解决了，这个错误说有个目录不存在，那也简单，我给他到对应的目录mkdir一个clamav，再次更新一下病毒库：
+/usr/local/clamav/bin/freshclam
+ClamAV update process started at Mon Jul 13 19:19:01 2020
+ERROR: Can't create temporary directory /usr/local/clamav/share/clamav/tmp.02d57
+Hint: The database directory must be writable for UID 1004 or GID 1011
+ERROR: Update failed.
+还报错。。。。。不过报错越来越明显，说的是权限问题，应该是刚刚创建的目录权限不够，我直接给777  chmod 777 clamav/，再次更新病毒库：
+ /usr/local/clamav/bin/freshclam
+ 终于成功了！病毒库在更新了！
+ 更新完之后我继续启动服务：/usr/local/clamav/sbin/clamd 
+ ERROR: Please define server type (local and/or TCP).
+又又又报错。。。。。这下没法看了，直接百度
+有个相似的教程，试试看：（https://blog.csdn.net/llwang_10/article/details/78686188）
+#cd /usr/local/clamav/etc
+#vi clamd.conf
+取消掉TCPSocket的注释，再次启动clamd
+#clamd
+搞完之后，当然我还是的使用绝对路径启动，这次什么也没有弹出来！！！！！！！！！！！！！
+ps aux | grep clamd
+有进程！！！真的成功了！！！！！！！！！！！！！！！！
+！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+
+
 
 
 
