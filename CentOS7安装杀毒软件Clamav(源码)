@@ -7,6 +7,8 @@
 #下载clamav源码包
   wget http://www.clamav.net/downloads/production/clamav-0.102.3.tar.gz
   
+#报了一些环境没有安装好的问题，直接用yum去安装了几个大概是编译器之类的东西，安装就可以继续了
+
 #常规的源码安装方式，configure时会提示有依赖没有安装libcurl
 
 #获取依赖的源码包
