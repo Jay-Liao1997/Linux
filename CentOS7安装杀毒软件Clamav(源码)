@@ -16,9 +16,16 @@
 怪不得find不到。根据这个教程https://www.cnblogs.com/chunguang/p/5668798.html说要注释这两个文件里面的Example,但是却发现他们说的路径下没有那个文件，他们是rpm或者yum安装，估计路径跟我不一样，
 于是我find去找，居然没有结果，崩溃。尝试直接启动服务看看，发现报错ERROR: Can't open/parse the config file /usr/local/clamav/etc/clamd.conf。这个报错提供了线索，我直接到
 /usr/local/clamav/etc/下面看了看，发现居然找到了参考教程里面说的两个文件，怪不得我find不到，原来文件名不一样，居然加了个example后缀。随后赶紧进去注释了分别Example，这下应该行了吧，
-再次绝对路径启动服务，还是报错：ERROR: Can't open/parse the config file /usr/local/clamav/etc/clamd.conf，还是说这个。。。突然想起是不是权限的问题，赶紧给了所有权限，启动，还是不行，
-猛然醒悟，会不会文件名的问题！我用mv命令把两个文件的重命名，也就是把example后缀去掉，再次启动服务。不对，参考教程说要更新病毒库freshcalm,但是显然我是无法直接使用命令的，再次找到绝对路径，
-这次有freshcalm的绝对路径，不错，试试看
+不对，参考教程说要更新病毒库freshcalm,但是显然我是无法直接使用命令的，再次找到绝对路径，
+这次有freshcalm的绝对路径，不错，试试看。发现报错：ERROR: Can't open/parse the config file /usr/local/clamav/etc/freshclam.conf，还是这问题。。。。
+突然想起是不是权限的问题，赶紧给了所有权限，启动，还是不行，
+猛然醒悟，会不会文件名的问题！我用mv命令把两个文件的重命名，也就是把example后缀去掉，再次进行更新病毒库： 
+/usr/local/clamav/bin/freshclam
+WARNING: Can't get information about user clamav.
+ERROR: Failed to switch to clamav user.
+ERROR: Initialization error!
+又报错，但是已经不是之前的错，说明修改文件名的操作生效了！
+报错说没有user
 
 
 
